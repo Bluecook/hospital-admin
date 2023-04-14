@@ -1,12 +1,14 @@
 import Mock from 'mockjs'
 import doctor from './doctor'
 import home from './home'
+import appointTable from './appointTable'
 
 
 Mock.mock('/api/login', 'post', home.userlogin)
 
 // 预约表格
-Mock.mock('/api/getTable', 'get', home.mockTable)
+Mock.mock('/api/getTable', 'get', appointTable.mockTable)
+Mock.mock('/api/addappoint', 'post', appointTable.addappoint)
 
 Mock.mock('/api/getDoctor', 'get', doctor.mockDoctor)
 

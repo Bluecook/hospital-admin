@@ -8,7 +8,7 @@
                 <a-button shape="round">{{ item.day }} {{ item.week }} </a-button>
             </div>
         </div>
-        <a-row style="height: calc(100% - 94px);" class="m-auto">
+        <div style="height: calc(100% - 94px);" class="m-auto">
             <div class="bg-skin-main-color h-[100% - 94px] flex">
                 <div class="w-[12.5%] flex flex-col pl-2 ">
                     <span class="h-20 inline-block m-2.5" v-for="item in aTime" :key="item">{{ item }}</span>
@@ -21,7 +21,7 @@
                     </a-card>
                 </div>
             </div>
-        </a-row>
+        </div>
     </div>
 </template>
 

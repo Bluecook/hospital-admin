@@ -1,7 +1,6 @@
 <!---->
 <template>
     <div class="flex justify-between items-center p-5">
-
         <div class="w-1/6 text-top flex">
             <div @click="menu.changeCollapsed" class="cursor-pointer">
                 <MenuUnfoldOutlined v-if="menu.collapsed" />
@@ -11,7 +10,7 @@
         </div>
         <div class="w-5/12 flex justify-between items-center">
         <!-- <a-switch v-model:checked="checked" checked-children="light" un-checked-children="dark"
-                        @change="handleSwitch" /> -->
+                                    @change="handleSwitch" /> -->
             <a-switch v-model:checked="checked" @change="handleSwitch">
                 <template #checkedChildren>
                     <IconFont name="icon-Sun"></IconFont>
@@ -67,5 +66,9 @@ const handlefullScreen = () => {
         fullScreen.value = !fullScreen.value
         document.documentElement.requestFullscreen()
     }
+}
+
+const sum = () => {
+    console.log(1);
 }
 </script>

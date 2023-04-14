@@ -1,7 +1,7 @@
 <!---->
 <template>
     <CommonTop></CommonTop>
-    <a-table :columns="columns" :dataSource="dataSource" style="color: #A9B7CD;"
+    <a-table :columns="columns" :dataSource="props.tables ? props.tables : dataSource" style="color: #A9B7CD;"
         :row-class-name="() => (isHover ? 'active' : null)" :defaultPageSize="5">
         <template #bodyCell="{ column, record }">
             <template v-if="column.key === 'status'">
@@ -15,10 +15,13 @@
 </template>
 
 <script lang='ts' setup>
-import { reactive, ref, toRefs, onMounted } from 'vue'
+import { reactive, ref, toRefs, onMounted, provide } from 'vue'
 import { tableInfo } from '@/module/home_inter';
 import http from '@/util/http'
 import CommonTop from '@/components/CommonTop/index.vue'
+const props = defineProps({
+    tables: Array<tableInfo>
+})
 
 const isHover = ref<Boolean>(false)
 const columns = [
