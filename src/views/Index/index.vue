@@ -6,9 +6,9 @@
                 :key="index">
                 <div class="flex md:flex-row sm:flex-col">
                     <div class="info w-1/4  flex md:flex-col sm:flex-row md:justify-center">
-                        <span class="pl-3 text-[#A9B7CD]">{{ item.total }}</span>
-                        <span class="pl-3 font-bold text-xl">{{ item.count }}</span>
-                        <span class="pl-3 text-[#FF0000]" v-if="index == 0">
+                        <span class="pl-3 md:pb-3 text-[#A9B7CD]">{{ t(`setmsg.${item.total}`) }}</span>
+                        <span class="pl-3 md:pb-3 font-bold text-xl">{{ item.count }}</span>
+                        <span class="pl-3 md:pb-3 text-[#FF0000]" v-if="index == 0">
                             <IconFont name="icon-youxiajiantou"></IconFont> {{ item.count
                             }}
                         </span>
@@ -17,7 +17,7 @@
                             {{ item.count }}
                         </span>
                     </div>
-                    <div class="w-3/4">
+                    <div class="w-3/4 animate__animated animate__lightSpeedInRight">
                         <!-- <Bar></Bar> -->
                         <Charts :option="BarOption" chartHeight="200px"></Charts>
                     </div>
@@ -25,11 +25,12 @@
             </div>
         </div>
         <div class="statistics mt-5 flex flex-wrap w-full justify-between">
-            <div class="lg:w-7/12 md:w-1/2 mr-3 sm:w-full bg-skin-main-color">
+            <div class="lg:w-7/12 md:w-1/2 mr-3 sm:w-full bg-skin-main-color animate__animated animate__backInUp">
                 <!-- <Line></Line> -->
                 <Charts :option="LineOption" chartHeight="400px"></Charts>
             </div>
-            <div class="lg:w-2/5 md:w-2/5 sm:w-full bg-skin-main-color md:mt-0 lg:mt-0 sm:mt-5">
+            <div
+                class="lg:w-2/5 md:w-2/5 sm:w-full bg-skin-main-color md:mt-0 lg:mt-0 sm:mt-5 animate__animated animate__backInUp">
                 <!-- <Pie></Pie> -->
                 <Charts :option="PieOption" chartHeight="400px"></Charts>
             </div>
@@ -48,13 +49,9 @@
 </template>
 
 <script lang='ts' setup>
-import { reactive, ref, toRefs, onMounted, provide, defineAsyncComponent } from 'vue'
-// import appointTable from '../Appointment/appointTable.vue';
-
-// import New from './New.vue';
-
-// import Charts from '../Charts/Charts.vue';
-
+import { ref, provide, defineAsyncComponent } from 'vue'
+import i18n from '@/i18n'
+const t = i18n.global.t
 interface label {
     percent: number,
     name: string,
@@ -67,9 +64,9 @@ const Charts = defineAsyncComponent(() => import('../Charts/Charts.vue'))
 provide('title', '预约')
 
 const totalData = ref([
-    { total: '患者总数', count: '598K', num: '+25%' },
-    { total: '医生总数', count: '352+', num: '+25%' },
-    { total: '预约总数', count: '159K', num: '+12%' },
+    { total: 'total.patientsText', count: '598K', num: '+25%' },
+    { total: 'total.doctorsText', count: '352+', num: '+25%' },
+    { total: 'total.appointmentsText', count: '159K', num: '+12%' },
 ])
 
 const BarOption = ref({

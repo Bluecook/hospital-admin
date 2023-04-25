@@ -2,41 +2,41 @@
 <template>
     <div class="appoint p-4">
         <div class="formTop mb-5 p-5">
-            <CommonTop title="预约表单" :show="true"></CommonTop>
+            <CommonTop title="预约表单" :show="false"></CommonTop>
             <div class="bg-skin-bg">
                 <a-form ref="formRef" :model="formState" name="appointForm" @finish="handleFinish"
                     @finishFailed="handleFinishFailed" :labelCol="{ span: 24 }" :rules="rules">
                     <a-row :gutter="20">
                         <a-col :span="8">
-                            <a-form-item name="userName" label="姓名">
+                            <a-form-item name="userName" :label="t('setmsg.appointForm.nameText')">
                                 <a-input v-model:value="formState.userName" placeholder="Your Name"> </a-input>
                             </a-form-item>
                         </a-col>
                         <a-col :span="8">
-                            <a-form-item label="电话" name="telephone">
+                            <a-form-item :label="t('setmsg.appointForm.phoneText')" name="telephone">
                                 <a-input :min="0" :max-length="11" :controls="false" v-model:value="formState.telephone"
                                     placeholder="Your Phone" width="100%" />
                             </a-form-item>
                         </a-col>
                         <a-col :span="8">
-                            <a-form-item label="日期" name="date">
+                            <a-form-item :label="t('setmsg.appointForm.dateText')" name="date">
                                 <a-date-picker v-model:value="formState['date']" value-format="YYYY-MM-DD" />
                             </a-form-item>
                         </a-col>
                         <a-col :span="8">
-                            <a-form-item label="时间" name="time">
+                            <a-form-item :label="t('setmsg.appointForm.timeText')" name="time">
                                 <a-time-picker v-model:value="formState['time']" format="HH:mm:ss"
                                     value-format="HH:mm:ss" />
                             </a-form-item>
                         </a-col>
                         <a-col :span="8">
-                            <a-form-item label="选择预约" name="fail">
+                            <a-form-item :label="t('setmsg.appointForm.selectAppointDepartmentText')" name="fail">
                                 <a-select v-model:value="formState.fail" show-search placeholder="Cardiology"
                                     :options="options" :filter-option="filterOption"></a-select>
                             </a-form-item>
                         </a-col>
                         <a-col :span="8">
-                            <a-form-item label="选择医生" name="doctor">
+                            <a-form-item :label="t('setmsg.appointForm.selectAppointDoctorText')" name="doctor">
                                 <a-select v-model:value="formState.doctor" show-search placeholder="Dr.Peterson"
                                     :options="options" :filter-option="filterOption"></a-select>
                             </a-form-item>
@@ -45,7 +45,7 @@
                         <a-col :span="24">
                             <a-form-item>
                                 <a-button type="primary" html-type="submit" block shape="round">
-                                    获取预约
+                                    {{ t('setmsg.common.ObtainAnAppointmentText') }}
                                 </a-button>
                             </a-form-item>
                         </a-col>
@@ -65,8 +65,9 @@ import CommonTop from '@/components/CommonTop/index.vue'
 import type { FormProps, SelectProps, FormInstance } from 'ant-design-vue';
 import { tableInfo } from '@/module/home_inter';
 import http from '@/util/http';
+import i18n from '@/i18n';
 const formRef = ref({} as FormInstance);
-
+const t = i18n.global.t
 provide('title', '预约')
 
 interface FormState {

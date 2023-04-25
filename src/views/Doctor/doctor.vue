@@ -37,28 +37,34 @@
                 <a-form ref="formRef" name="custom-validation" :model="formState" :rules="rules" @finish="handleFinish"
                     @validate="handleValidate" @finishFailed="handleFinishFailed">
                     <a-form-item has-feedback name="userName">
-                        <a-input v-model:value="formState.userName" autocomplete="off" placeholder="姓名" />
+                        <a-input v-model:value="formState.userName" autocomplete="off"
+                            :placeholder="t('setmsg.appointForm.nameText')" />
                     </a-form-item>
                     <a-form-item has-feedback name="telephone">
-                        <a-input v-model:value="formState.telephone" autocomplete="off" placeholder="电话" />
+                        <a-input v-model:value="formState.telephone" autocomplete="off"
+                            :placeholder="t('setmsg.appointForm.phoneText')" />
                     </a-form-item>
                     <a-form-item has-feedback name="date">
-                        <a-date-picker v-model:value="formState.date" placeholder="日期" />
+                        <a-date-picker v-model:value="formState.date" :placeholder="t('setmsg.appointForm.dateText')" />
                     </a-form-item>
                     <a-form-item has-feedback name="time">
                         <!-- <a-input autocomplete="off" /> -->
-                        <a-time-picker v-model:value="formState.time" format="HH:mm" placeholder="时间" />
+                        <a-time-picker v-model:value="formState.time" format="HH:mm"
+                            :placeholder="t('setmsg.appointForm.timeText')" />
                     </a-form-item>
                     <a-form-item has-feedback name="fail">
-                        <a-select v-model:value="formState.fail" autocomplete="off" placeholder="选择门诊"
+                        <a-select v-model:value="formState.fail" autocomplete="off"
+                            :placeholder="t('setmsg.appointForm.selectAppointDepartmentText')"
                             :options="zdoctor.map(pro => ({ value: pro }))"></a-select>
                     </a-form-item>
                     <a-form-item has-feedback name="doctor">
-                        <a-select v-model:value="formState.doctor" autocomplete="off" placeholder="选择医生"
-                            :disabled="!formState.fail" :options="doctors.map(city => ({ value: city }))"></a-select>
+                        <a-select v-model:value="formState.doctor" autocomplete="off"
+                            :placeholder="t('setmsg.appointForm.selectAppointDoctorText')" :disabled="!formState.fail"
+                            :options="doctors.map(city => ({ value: city }))"></a-select>
                     </a-form-item>
-                    <a-form-item :wrapper-col="{ span: 18, offset: 3 }">
-                        <a-button type="primary" html-type="submit" shape="round" block>预约</a-button>
+                    <a-form-item>
+                        <a-button type="primary" html-type="submit" shape="round">{{
+                            t('setmsg.common.ObtainAnAppointmentText') }}</a-button>
                     </a-form-item>
                 </a-form>
             </div>
@@ -75,9 +81,9 @@ import CommonTop from '@/components/CommonTop/index.vue'
 import http from '@/util/http';
 import { doctorInfo } from '@/module/doctor_inter'
 import type { Dayjs } from 'dayjs';
-
 import type { Rule } from 'ant-design-vue/es/form';
 import type { FormInstance } from 'ant-design-vue';
+import i18n from '@/i18n';
 interface FormState {
     userName: string,
     telephone: number | string,
@@ -87,7 +93,7 @@ interface FormState {
     doctor: string
 }
 
-
+const t = i18n.global.t
 provide('title', '')
 
 const doctorInfos = ref<Array<doctorInfo>>()

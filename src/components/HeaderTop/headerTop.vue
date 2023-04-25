@@ -9,8 +9,10 @@
             <div class="ml-2">{{ route.meta.menuName }}</div>
         </div>
         <div class="w-5/12 flex justify-between items-center">
-        <!-- <a-switch v-model:checked="checked" checked-children="light" un-checked-children="dark"
-                                    @change="handleSwitch" /> -->
+            <div class="ml-1 mr-1 cursor-pointer" @click="handleLang">
+                <IconFont v-if="temp" width="2" height="2" name="icon-zhongyingwenqiehuan-zhongwen"></IconFont>
+                <IconFont v-else width="2" height="2" name="icon-zhongyingwenqiehuan-yingwen"></IconFont>
+            </div>
             <a-switch v-model:checked="checked" @change="handleSwitch">
                 <template #checkedChildren>
                     <IconFont name="icon-Sun"></IconFont>
@@ -33,16 +35,31 @@
 </template>
 
 <script lang='ts' setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router';
 import { menuStore } from '@/store/menu';
 import { toggleTheme } from "@zougt/vite-plugin-theme-preprocessor/dist/browser-utils";
+import { useLocalStore } from '@/store/local'
+import { useI18n } from 'vue-i18n'
+import i18n from '../../i18n/index'
 const route = useRoute()
 const menu = menuStore()
-
 const keyWord = ref('')
 const checked = ref(true)
 const fullScreen = ref(true)
+const temp = ref(true)
+const useLocal = useLocalStore()
+
+const { locale } = useI18n()
+const t = i18n.global.t
+const handleLang = () => {
+    useLocal.setCurrentLocale()
+    locale.value = useLocal.getCurrentLocale.lang
+    // console.log(useLocal.getCurrentLocale.lang);
+
+    temp.value = !temp.value
+}
+
 const handleSwitch = (checked: boolean | string | number, event: Event) => {
     // const classList = document.documentElement.classList
     if (checked) {
@@ -68,7 +85,15 @@ const handlefullScreen = () => {
     }
 }
 
-const sum = () => {
-    console.log(1);
-}
+onMounted(() => {
+    // 函数体
+    const lang = localStorage.getItem('lang')
+    if (lang) {
+        lang === 'zh-cn' ? temp.value = true : temp.value = false
+        return
+    } else {
+        localStorage.setItem('lang', 'zh-cn')
+    }
+})
+
 </script>

@@ -55,7 +55,9 @@ export default defineConfig({
   // 路径别名
   resolve: {
     alias: {
-      '@': '/src/'
+      '@': '/src/',
+      // 去除控制台警告
+      'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js'
     }
   },
   // 打包

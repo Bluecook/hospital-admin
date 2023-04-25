@@ -8,7 +8,7 @@
             <div class="sticky top-0 z-10 bg-skin-bg ">
                 <HeaderTop></HeaderTop>
             </div>
-            <div class="w-full">
+            <div class="w-full animate__animated animate__backInRight">
                 <RouterView></RouterView>
             </div>
         </div>

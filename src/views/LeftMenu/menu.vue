@@ -11,7 +11,7 @@
             <template #icon>
                 <IconFont :name="item.icon"></IconFont>
             </template>
-            <span>{{ item.name }}</span>
+            <span>{{ t(`setmsg.${item.name}`) }}</span>
         </a-menu-item>
     </a-menu>
     <div class="flex justify-center w-full">
@@ -24,58 +24,61 @@ import { reactive, ref, toRefs } from 'vue'
 import { getImageUrl } from '@/util/getfile'
 import { useRouter, useRoute } from 'vue-router'
 import { menuStore } from '@/store/menu';
+import i18n from '@/i18n';
+
+const t = i18n.global.t
 
 const route = useRoute()
 const menuList = [
     {
         key: 'index',
         icon: 'icon-yibiaopan',
-        name: '仪表盘'
+        name: 'menubar.DashboardText'
     },
     {
         key: 'appointment',
         icon: 'icon-yyjl',
-        name: '预约'
+        name: 'menubar.appointmentText'
     },
     {
         key: 'doctor',
         icon: 'icon-yisheng1',
-        name: '医生'
+        name: 'menubar.doctorText'
     },
     {
         key: 'schedule',
         icon: 'icon-chayuericheng',
-        name: '日程'
+        name: 'menubar.scheduleText'
     },
     {
         key: 'outclinic',
         icon: 'icon-ico_jiankangmenzhen_zonghemenzhen',
-        name: '门诊'
+        name: 'menubar.OutpatientServiceText'
     },
     {
         key: 'pack',
         icon: 'icon-wuliubaozhuangzhihe',
-        name: '包装'
+        name: 'menubar.packText'
     },
     {
         key: 'quotation',
         icon: 'icon-tubiao-baojia',
-        name: '报价'
+        name: 'menubar.quotationText'
     },
     {
         key: 'location',
         icon: 'icon-weizhi',
-        name: '我们的位置'
+        name: 'menubar.locationText'
     },
     {
         key: 'login',
         icon: 'icon-sinandengluyonghu',
-        name: '登录/注册'
+        name: 'menubar.loregisterText'
     },
     {
         key: 'help',
         icon: 'icon-bangzhu',
-        name: '帮助中心'
+        name: 'menubar.HelpCenterText'
     }
 ]
 

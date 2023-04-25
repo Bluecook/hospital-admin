@@ -5,9 +5,9 @@
         :row-class-name="() => (isHover ? 'active' : null)" :defaultPageSize="5">
         <template #bodyCell="{ column, record }">
             <template v-if="column.key === 'status'">
-                <a-tag v-show="record.status.number == 0" color="#2db7f5">已完成</a-tag>
-                <a-tag v-show="record.status.number == 1" color="#87d068">排队中</a-tag>
-                <a-tag v-show="record.status.number == 2" color="#108ee9">已取消</a-tag>
+                <a-tag v-show="record.status.number == 0" color="#2db7f5">{{ t('setmsg.appoint.cancelText') }}</a-tag>
+                <a-tag v-show="record.status.number == 1" color="#87d068">{{ t('setmsg.appoint.queuingText') }}</a-tag>
+                <a-tag v-show="record.status.number == 2" color="#108ee9">{{ t('setmsg.appoint.completeText') }}</a-tag>
             </template>
 
         </template>
@@ -19,6 +19,10 @@ import { reactive, ref, toRefs, onMounted, provide } from 'vue'
 import { tableInfo } from '@/module/home_inter';
 import http from '@/util/http'
 import CommonTop from '@/components/CommonTop/index.vue'
+import i18n from '@/i18n';
+
+const t = i18n.global.t
+
 const props = defineProps({
     tables: Array<tableInfo>
 })

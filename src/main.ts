@@ -12,13 +12,18 @@ import pinia from './store'
 import Particles from "vue3-particles";
 import { setupDirectives } from './views/directives'
 
+import 'animate.css'
+import i18n from './i18n';
+
 
 const app = createApp(App)
 setupDirectives(app)
-// app.use(Antd)
+
 app.use(router)
 app.use(pinia)
+app.use(i18n)
 app.use(Particles)
-app.use(IconFontPlugin, { url: '//at.alicdn.com/t/c/font_3960292_ror1lcu4gpi.js' })
+// 阿里巴巴图标库
+app.use(IconFontPlugin, { url: '//at.alicdn.com/t/c/font_3960292_b6tzik954da.js' })
 
 app.mount('#app')
