@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+svg {
+  vertical-align: initial;
+}
+
+@layer base {
+  :root {
+    /* 背景颜色 */
+    --color-bg-base: 191, 219, 254;
+    /* 右侧边栏背景颜色 */
+    --color-bg-right: 0, 95, 255;
+    /* 按钮颜色 */
+    --color-btn-bg: 0, 95, 255;
+    /* 文字颜色 */
+    --color-text-base: rgb(177, 187, 205);
+    /* 白色背景 */
+    --color-main: 240, 240, 240;
+    /* 选中文字颜色 */
+    --color-text-select: #3c5681;
+    /* 按钮字体颜色 */
+    --color-btn-base: #fff;
+    /* 黑色文字颜色 */
+    --color-text-top: #001536;
+    /* 绿色字体颜色 */
+    --color-text-green: #3bad13;
+    /* 灰色字体 */
+    --color-text-gray: #a6aeba;
+    /* 删除线字体颜色 */
+    --color-text-del: #b0bfd7;
+    /* 左侧背景 */
+    --color-bg-left: 255, 255, 255;
+  }
+
+  .theme-pink {
+    /* 背景色 */
+    --color-bg-base: 251, 207, 232;
+    /* 右侧边栏背景颜色 */
+    --color-bg-right: 220, 21, 124;
+    /* 按钮颜色 */
+    --color-btn-bg: 244, 114, 182;
+    /* 按钮字体颜色 */
+    --color-btn-base: #fff;
+  }
+  .theme-dark {
+    /* 背景色 */
+    --color-bg-base: 0, 0, 0;
+    /* 右侧边栏背景颜色 */
+    --color-bg-right: 84, 78, 78;
+    /* 按钮颜色 */
+    --color-btn-bg: 153, 153, 153;
+    /* 按钮字体颜色 */
+    --color-btn-base: #fff;
+    /* top文字颜色 */
+    --color-text-top: #f1f1f1;
+    /* 左侧背景 */
+    --color-bg-left: 20, 20, 20;
+    /* 白色背景 */
+    --color-main: 52, 52, 52;
+  }
+}
