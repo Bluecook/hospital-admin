@@ -104,5 +104,5 @@ export default defineConfig({
   build: {
     outDir: "./docs",
   },
-  base: "./hospital-admin",
+  base: "/hospital-admin/",
 });
