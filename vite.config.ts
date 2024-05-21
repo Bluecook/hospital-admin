@@ -24,15 +24,21 @@ export default defineConfig({
     viteCompression(),
     // 按需自动导入
     AutoImport({
-      resolvers: [AntDesignVueResolver({ importStyle: "less" })],
+      resolvers: [AntDesignVueResolver({ importStyle: false })],
     }),
     Components({
       // 引入ant-design-vue样式
       resolvers: [
-        AntDesignVueResolver({ importStyle: "less", resolveIcons: true }),
+        AntDesignVueResolver({
+          importStyle: false, // css in js
+          resolveIcons: true, // 自动引入图标
+        }),
       ],
+      /* resolvers: [
+        AntDesignVueResolver({ importStyle: "less", resolveIcons: true }),
+      ], */
     }),
-    themePreprocessorPlugin({
+    /*  themePreprocessorPlugin({
       less: {
         // 是否启用任意主题色模式，这里不启用
         arbitraryMode: false,
@@ -48,7 +54,7 @@ export default defineConfig({
         ],
         extract: false,
       },
-    }),
+    }), */
     importToCDN({
       modules: [
         // {

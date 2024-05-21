@@ -52,7 +52,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, inject } from "vue";
 import { useRoute } from "vue-router";
 import { menuStore } from "@/store/menu";
 import { toggleTheme } from "@zougt/vite-plugin-theme-preprocessor/dist/browser-utils";
@@ -79,19 +79,21 @@ const handleLang = () => {
 
   temp.value = !temp.value;
 };
-
+let { changeTheme } = inject("theme") as { changeTheme: Function };
 const handleSwitch = (checked: boolean | string | number, event: Event) => {
-  // const classList = document.documentElement.classList
+  const classList = document.documentElement.classList;
+  changeTheme(checked);
+
   if (checked) {
-    // classList.add('theme-dark')
-    toggleTheme({
+    classList.remove("theme-dark");
+    /*  toggleTheme({
       scopeName: "theme-default",
-    });
+    }); */
   } else {
-    // classList.remove('theme-dark')
-    toggleTheme({
+    classList.add("theme-dark");
+    /* toggleTheme({
       scopeName: "theme-dark",
-    });
+    }); */
   }
 };
 
@@ -116,3 +118,11 @@ onMounted(() => {
   }
 });
 </script>
+<style>
+.ant-switch .ant-switch-inner .ant-switch-inner-unchecked {
+  margin-top: -6px;
+}
+.ant-switch.ant-switch-checked .ant-switch-inner .ant-switch-inner-checked {
+  margin-top: 6px;
+}
+</style>
