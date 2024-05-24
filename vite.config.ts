@@ -21,7 +21,7 @@ export default defineConfig({
       mockPath: "./src/util/mock",
       supportTs: true, //如果使用 js发开，则需要配置 supportTs 为 false
     }),
-    viteCompression(),
+    // viteCompression(),
     // 按需自动导入
     AutoImport({
       resolvers: [AntDesignVueResolver({ importStyle: false })],
@@ -110,5 +110,5 @@ export default defineConfig({
   build: {
     outDir: "./docs/",
   },
-  base: "./hospital-admin/",
+  base: "/hospital-admin/",
 });
