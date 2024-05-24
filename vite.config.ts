@@ -86,7 +86,7 @@ export default defineConfig({
         {
           name: "echarts",
           var: "echarts",
-          path: "https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js",
+          path: "https://cdn.bootcdn.net/ajax/libs/echarts/5.5.0/echarts.min.js",
         },
       ],
     }),
@@ -110,5 +110,5 @@ export default defineConfig({
   build: {
     outDir: "./docs/",
   },
-  base: "/hospital-admin/",
+  base: "./hospital-admin/",
 });
