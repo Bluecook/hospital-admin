@@ -108,7 +108,7 @@ export default defineConfig({
   },
   // 打包
   build: {
-    outDir: "./hospital-admin",
+    outDir: "./docs/",
   },
   base: "/hospital-admin/",
 });
